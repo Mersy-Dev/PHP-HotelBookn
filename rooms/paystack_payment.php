@@ -2,9 +2,18 @@
 session_start(); // Ensure session is started at the beginning
 
 require "../config/config.php";
+// require "../includes/header.php";
+// Define APPURL if not already defined
+if (!defined('APPURL')) {
+    define("APPURL", "http://localhost/hotelBookn/");
+}
+
 
 if (!isset($_SESSION['booking_details'])) {
     header("Location: index.php");
+    header("Location: " . APPURL . "index.php");
+
+    
     exit;
 }
 

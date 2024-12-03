@@ -1,7 +1,11 @@
 <?php
-// session_start();
+session_start();
 require "../config/config.php";
-require "../includes/header.php";
+
+// Define APPURL if not already defined
+if (!defined('APPURL')) {
+    define("APPURL", "http://localhost/hotelBookn/");
+}
 
 // Ensure booking details are available
 if (!isset($_SESSION['booking_details'])) {
