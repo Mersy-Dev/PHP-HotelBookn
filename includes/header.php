@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    define("APPURL", "http://localhost/hotelBookn/");
+session_start();
+define("APPURL", "http://localhost/hotelBookn/");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,17 +18,17 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="<?php echo APPURL; ?>/css/animate.css">
+    <link rel="stylesheet" href="<?php echo APPURL; ?>css/animate.css">
 
-    <link rel="stylesheet" href="<?php echo APPURL; ?>/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?php echo APPURL; ?>/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="<?php echo APPURL; ?>/css/magnific-popup.css">
+    <link rel="stylesheet" href="<?php echo APPURL; ?>css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?php echo APPURL; ?>css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="<?php echo APPURL; ?>css/magnific-popup.css">
 
-    <link rel="stylesheet" href="<?php echo APPURL; ?>/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="<?php echo APPURL; ?>/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="<?php echo APPURL; ?>css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="<?php echo APPURL; ?>css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="<?php echo APPURL; ?>/css/flaticon.css">
-    <link rel="stylesheet" href="<?php echo APPURL; ?>/css/style.css">
+    <link rel="stylesheet" href="<?php echo APPURL; ?>css/flaticon.css">
+    <link rel="stylesheet" href="<?php echo APPURL; ?>css/style.css">
 </head>
 
 <body>
@@ -65,23 +65,37 @@
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="<?php echo APPURL; ?>" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="rooms.html" class="nav-link">Apartment Room</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">
+                        <a href="<?php echo APPURL; ?>" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'about.php' ? 'active' : ''; ?>">
+                        <a href="<?php echo APPURL; ?>about.php" class="nav-link">About</a>
+                    </li>
+                    <li
+                        class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'services.php' ? 'active' : ''; ?>">
+                        <a href="<?php echo APPURL; ?>services.php" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'contact.php' ? 'active' : ''; ?>">
+                        <a href="<?php echo APPURL; ?>contact.php" class="nav-link">Contact</a>
+                    </li>
                     <?php if (!isset($_SESSION['username'])): ?>
-                        <li class="nav-item"><a href="<?php echo APPURL; ?>auth/login.php" class="nav-link">Login</a></li>
-                        <li class="nav-item"><a href="<?php echo APPURL; ?>auth/register.php" class="nav-link">Register</a></li>
+                        <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'login.php' ? 'active' : ''; ?>">
+                            <a href="<?php echo APPURL; ?>auth/login.php" class="nav-link">Login</a>
+                        </li>
+                        <li
+                            class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'register.php' ? 'active' : ''; ?>">
+                            <a href="<?php echo APPURL; ?>auth/register.php" class="nav-link">Register</a>
+                        </li>
                     <?php else: ?>
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo $_SESSION['username']; ?>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item"
+                                        href="<?php echo APPURL; ?>users/bookings.php?id=<?php echo $_SESSION['id']; ?>">Your
+                                        Bookings</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -91,6 +105,7 @@
                         </li>
                     <?php endif; ?>
                 </ul>
+
             </div>
         </div>
     </nav>

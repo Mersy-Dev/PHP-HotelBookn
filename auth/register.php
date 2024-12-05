@@ -21,7 +21,11 @@ if (isset($_POST['submit'])) {
     $stmt = $conn->prepare($sql);
     $stmt->execute([':username' => $username, ':email' => $email, ':password' => $password]);
     echo "<script>alert('User registered successfully')</script>";
-    header('location: login.php');
+    echo "<script>window.location.href='".APPURL."auth/login.php'</script>";
+    
+    // header('location: login.php');
+    // header("Location: " . APPURL . "index.php");
+
   }    
 }
 ?>
